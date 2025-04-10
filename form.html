@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body{
+            justify-content:center;
+            text-align: center;
+            background-color:antiquewhite;
+        }
+        #er_box{
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;;
+        }
+    </style>
+</head>
+<body>
+    <form id="auform" onsubmit="return Valform()">
+   <label for="name" >name:</label>
+   <input required id="name" placeholder="enter name" type="text"/>
+   <br>
+   <label for="username" >username:</label>
+   <input required id="username" type="text" placeholder="enter username"/>
+   <br>
+   <label for="password">password:</label>
+   <input required id="password" type="password" placeholder="enter password"/>
+   <br>
+   <label for="phone">Phone-no</label>
+    <input required id="phone" type="text" placeholder="enter number"/>
+    <br>
+    <label for="Zip-code">Zip-code</label>
+    <input required id="Zip-code" type="text" placeholder="enter Zip-code">
+    <br>
+    <input type="submit" value="submit">
+    </form>
+    <span id="er_box" ></span>
+     <script >
+        function Valform(){
+var formvalid=document.getElementById("auform").value;
+var name=document.getElementById("name").value;
+var username=document.getElementById("username").value;
+var password=document.getElementById("password").value;
+var phone=document.getElementById("phone").value;
+var zipcode=document.getElementById("Zip-code").value;
+var ermsg=document.getElementById("er_box");
+
+var namepat=/^[a-zA-Z\s]{1,30}$/;
+var userpat=/^[\w@]{2,26}$/;
+var passpat=/^(?=.*[a-z])(?=.*\d).{8,}$/;
+var phonepat=/^\d{3}-?\d{4}-?\d{4}$/;
+var zippat=/^\d{5}$/;
+
+if(!(namepat.test(name))){
+    ermsg.innerText="name should contain only alphabets";
+    return false;
+}
+if(!(userpat.test(username))){
+    ermsg.innerText="usernames should contain only alphanumeric charaters";
+    return false;
+
+}
+if(!(passpat.test(password))){
+    ermsg.innerText="password should contain atleast one alphabet one digit and atleast  characters long";
+    return false;
+}
+if(!(phonepat.test(phone))){
+    ermsg.innerText="enter valid phone no";
+    return false;
+}
+if(!(zippat.test(zipcode))){
+    ermsg.innerText="enter valid zipcode";
+    return false;
+}
+alert("form is submitted");
+return true;
+
+}
+    </script>
+</body>
+</html>

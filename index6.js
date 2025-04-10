@@ -1,0 +1,10 @@
+const art=document.querySelector("article");
+const hea=document.createElement("h1");
+hea.textContent="new header added through dom";
+art.appendChild(hea);
+const par=document.createElement("p");
+par.textContent="new para added through dom";
+art.appendChild(par);
+art.removeChild(par);
+const parc=document.getElementById("artpara");
+parc.textContent="old text rplaced by new text";
